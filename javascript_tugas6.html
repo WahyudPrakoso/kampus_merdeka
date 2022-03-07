@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tugas Js | Kalkulator Javascript</title>
+	<style type="text/css">
+	select{
+		height: 40px;
+		width: 95%;
+		border:1px solid #3babeb;
+		background: #f2f2f2;
+		padding: 10px;
+		font-size: 15px;
+		border-radius: 5px;
+	}
+	select:focus{
+		background: #fff;
+	}
+	table{
+		width: 100%;
+	}
+	td{
+		padding: 15px 10px;
+	}
+	form{
+		margin-top: 50px;
+	}
+	label{
+		font-size: 14px;
+		margin-bottom: 10px;
+		color: blue;
+	}
+	.form-container{
+		border: 1px solid #3babeb;
+		background: #fff;
+		border-radius: 8px;
+		font-family: 'Helvetica Neue',Helvetica,sans-serif;
+		text-decoration: none;
+		vertical-align: middle;
+		min-width: 300px;
+		padding: 20px;
+		width:500px;
+		margin-top: ;
+		box-shadow: 5px 5px 7px #afafaf;
+	}
+	.form-field{
+		border:1px solid #3babeb;
+		background:#f2f2f2;
+		border-radius: 4px;
+		color: navy;
+		padding: 10px;
+		width:90%;
+		font-size: 15px;
+		height: 25px;
+	}
+	.form-field:focus{
+		background: #fff;
+		color: #725129;
+	}
+	.form-title{
+		margin-bottom: 10px;
+		color: #725129;
+		text-shadow: #fdf2e4 0 1px 0;
+	}
+	.container {
+		display: block;
+		position: relative;
+		padding-left: 35px;
+		margin-bottom: 12px;
+		cursor: pointer;
+		font-size: 15px;
+		user-select: none;
+	}
+
+	/* Hide the browser's default radio button */
+	.container input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	/* Create a custom radio button */
+	.checkmark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 25px;
+		width: 25px;
+		background-color: #ccc;
+		border-radius: 50%;
+	}
+
+	/* On mouse-over, add a grey background color */
+	.container:hover input ~ .checkmark {
+		background-color: #3babeb;
+	}
+
+	/* When the radio button is checked, add a blue background */
+	.container input:checked ~ .checkmark {
+		background-color: #2196F3;
+	}
+
+	/* Create the indicator (the dot/circle - hidden when not checked) */
+	.checkmark:after {
+		content: "";
+		position: absolute;
+		display: none;
+	}
+
+	/* Show the indicator (dot/circle) when checked */
+	.container input:checked ~ .checkmark:after {
+		display: block;
+	}
+
+	/* Style the indicator (dot/circle) */
+	.container .checkmark:after {
+		top: 9px;
+		left: 9px;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: white;
+	}
+
+	.tombol{
+		background:#0080c9;
+		padding:10px 30px;
+		/*margin:20px 5px;*/
+		font-size:16px;
+		border:none;
+		border-radius: 5px;
+		text-decoration:none;
+		color:#FFF;
+		font-weight: bold;
+	}
+	.tombol:hover{
+		background:#3babeb;
+		-webkit-transition:all ease 0.5s;
+		-moz-transition:all ease 0.5s;
+	}
+</style>
+</head>
+<body>
+	<center>
+		
+		<div class="form-container" id="form" style="margin-top: 50px">
+			<table cellpadding="10" border="0" style="border-collapse: collapse;">
+				<thead style="margin-top: 0px;">
+					<tr>
+						<th colspan="2">
+							<h2>Kalkulator Javascript</h2>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan="2">
+							<label>Angka Pertama</label>
+							<input id="angka1" type="number" name="angka1" class="form-field" autofocus="" placeholder="misal : 1" style="margin-top: 5px;">
+						</td>
+						<td align="center"><button name="tambah" class="tombol" onclick="sum();"> + </button></td>
+					</tr>
+					<tr>
+						
+						<td align="center"><a type="" href="#" name="kurang" class="tombol" onclick="min();"> - </a></td>
+					</tr>
+					<tr>
+						<td rowspan="2">
+							<label>Angka Kedua</label>
+							<input id="angka2" type="number" name="angka2"  class="form-field" placeholder="misal : 3" style="margin-top: 5px;">
+						</td>
+						<td align="center"><a type="" href="#" name="kali" class="tombol" onclick="time();"> * </a></td>
+					</tr>
+					<tr>
+						
+						<td align="center"><a href="#" name="bagi" class="tombol" onclick="divide();"> / </a></td>
+					</tr>
+					<tr>
+						<td rowspan="2">
+							<label>Hasil Hitung</label>
+							<input id="hasil" disabled="" type="number" name="jumlah"  class="form-field" placeholder="Hasil perhitungan" style="margin-top: 5px;">
+						</td>
+						<td align="center"><a type="" href="#" name="pangkat" class="tombol" onclick="pow();"> ^ </a></td>
+					</tr>
+					<tr>
+						<td align="center">
+							<button type="reset" name="batal" onclick="reset();" class="tombol">batal</button>
+						</td>
+						
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2" align="center">
+							<p>Design By : &copy; 1B Wahyu Dwi Prakoso 2022</p>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</center>
+
+	<script type="text/javascript">
+		function sum() {
+			var firstNum = parseFloat(document.getElementById('angka1').value);
+			var secondNum = parseFloat(document.getElementById('angka2').value);
+			if (firstNum == "" || secondNum == "") {
+				alert('mohon isi angka pertama dan angka kedua!!');
+			}
+			else if(typeof(firstNum) == 'string' || typeof(secondNum) == 'string'){
+				alert("tipe data tidak dapat diproses!!");
+			}
+			else{
+				document.getElementById('hasil').value = firstNum + secondNum;
+			}
+			
+		}
+		function min() {
+			var firstNum = parseFloat(document.getElementById('angka1').value);
+			var secondNum = parseFloat(document.getElementById('angka2').value);
+			if (firstNum == "" || secondNum == "") {
+				alert('mohon isi angka pertama dan angka kedua!!');
+			}
+			else if(typeof(firstNum) == 'string' || typeof(secondNum) == 'string'){
+				alert("tipe data tidak dapat diproses!!");
+
+			}
+			else{
+				document.getElementById('hasil').value = firstNum - secondNum;
+			}
+			
+		}
+		function time() {
+			var firstNum = parseFloat(document.getElementById('angka1').value);
+			var secondNum = parseFloat(document.getElementById('angka2').value);
+			if (firstNum == "" || secondNum == "") {
+				alert('mohon isi angka pertama dan angka kedua!!');
+			}
+			else if(typeof(firstNum) == 'string' || typeof(secondNum) == 'string'){
+				alert("tipe data tidak dapat diproses!!");
+				
+			}
+			else{
+				document.getElementById('hasil').value = firstNum * secondNum;
+			}
+			
+		}
+		function divide() {
+			var firstNum = parseFloat(document.getElementById('angka1').value);
+			var secondNum = parseFloat(document.getElementById('angka2').value);
+			if (firstNum == "" || secondNum == "") {
+				alert('mohon isi angka pertama dan angka kedua!!');
+			}
+			else if(typeof(firstNum) == 'string' || typeof(secondNum) == 'string'){
+				alert("tipe data tidak dapat diproses!!");
+				
+			}
+			else{
+				document.getElementById('hasil').value = firstNum / secondNum;
+			}
+			
+		}
+		function pow() {
+			var firstNum = parseInt(document.getElementById('angka1').value);
+			var secondNum = parseInt(document.getElementById('angka2').value);
+			if (firstNum == "" || secondNum == "") {
+				alert('mohon isi angka pertama dan angka kedua!!');
+			}
+			else if(typeof firstNum === "string" || typeof secondNum === "string"){
+				alert("tipe data tidak dapat diproses!!");
+				
+			}
+			else{
+				document.getElementById('hasil').value = Math.pow(firstNum, secondNum);
+			}
+			
+		}
+		function reset() {
+			document.getElementById('hasil').value = "";
+			document.getElementById('angka1').value = "";
+			document.getElementById('angka2').value = "";
+			
+		}
+	</script>
+</body>
+</html>
