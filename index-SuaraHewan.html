@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tugas JQuery | JQuery Suara Hewan</title>
+	<style type="text/css">
+
+	.box{
+		border: 3px solid #3babeb;
+		margin: 10px 10px;
+		width: 200px;
+		border-radius: 8px;
+		font-family: 'Helvetica Neue',Helvetica,sans-serif;
+		text-decoration: none;
+		vertical-align: middle;
+	}
+	.container{
+		border: 1px solid #3babeb;
+		background: #fff;
+		border-radius: 8px;
+		font-family: 'Helvetica Neue',Helvetica,sans-serif;
+		text-decoration: none;
+		vertical-align: middle;
+		min-width: 300px;
+		padding: 20px;
+		width:820px;
+		margin-top: ;
+		box-shadow: 5px 5px 7px #afafaf;
+	}		
+	.hewan{
+		background-color: #3babeb;
+		max-width: 200px;
+		margin: 5px;
+		min-height: 100px;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+</style>
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<center>
+		<h2>Arahkan mouse ke kotak untuk mengeluarkan suara hewan</h2>
+		<!-- <div class="container"> -->
+			<audio></audio>
+			<table class="container">
+				<tr>
+					<td align="center">
+						<div class="box">
+							<div class="hewan ayam">
+							</div>
+							<p class="textAyam">
+								Anak Ayam
+							</p>
+						</div>
+					</td>
+					<td align="center">
+						<div class="box">
+							<div class="hewan kambing">
+							</div>
+							<p class="textAyam">
+								Anak Kambing
+							</p>
+						</div>
+					</td>
+					<td align="center">
+						<div class="box">
+							<div class="hewan badak">
+							</div>
+							<p class="textAyam">
+								Badak
+							</p>
+						</div>
+					</td>
+					<td align="center">
+						<div class="box">
+							<div class="hewan burungHantu">
+							</div>
+							<p class="textAyam">
+								Burung Hantu
+							</p>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="center">
+						<hr>
+						<i>Nb: jangan menggerakkan mouse ke kotak berlebihan</i>
+					</td>
+				</tr>
+			</table>			
+		<!-- </div> -->
+		
+	</center>
+
+	<script type="text/javascript">
+		$("document").ready(function() {
+			$("div.ayam").mouseover(function () {
+				$(this).css({
+					background : "url('res/image/anakAyam.jpg')"
+				});
+				$("<audio></audio>").attr({
+					'src':'res/audio/anakAyam.mp3',
+					'volume':0.4,
+					'autoplay':'autoplay'
+				});
+			});
+			$("div.ayam").mouseout(function () {
+				$(this).css({
+					background : "#3babeb"
+				});
+				
+			});
+			$("div.kambing").mouseover(function () {
+				$(this).css({
+					background : "url('res/image/anakKambing.jpg')"
+				});
+				
+				$("<audio></audio>").attr({
+					'src':'res/audio/anakKambing.mp3',
+					'volume':0.4,
+					'autoplay':'autoplay'
+				});
+			});
+			$("div.kambing").mouseout(function () {
+				$(this).css({
+					background : "#3babeb"
+				});
+				
+			});
+			$("div.badak").mouseover(function () {
+				$(this).css({
+					background : "url('res/image/badak.jpg')"
+				});
+				
+				$("<audio></audio>").attr({
+					'src':'res/audio/badak.mp3',
+					'volume':0.4,
+					'autoplay':'autoplay'
+				});
+			});
+			$("div.badak").mouseout(function () {
+				$(this).css({
+					background : "#3babeb"
+				});
+				
+			});
+			$("div.burungHantu").mouseover(function () {
+				$(this).css({
+					background : "url('res/image/burungHantu.jpeg')"
+				});
+				
+				$("<audio></audio>").attr({
+					'src':'res/audio/burungHantu.mp3',
+					'volume':0.4,
+					'autoplay':'autoplay'
+				});
+			});
+			$("div.burungHantu").mouseout(function () {
+				$(this).css({
+					background : "#3babeb"
+				});
+				
+			});
+		});
+	</script>
+</body>
+</html>
